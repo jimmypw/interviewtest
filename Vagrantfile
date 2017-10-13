@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y epel-release
-    yum install -y nc bind-utils man man-pages iptables-utils vim nano vi lsof telnet
+    yum install -y nc bind-utils man man-pages iptables-utils vim nano vi lsof telnet puppet
     adduser -s /usr/sbin/nologin -d /home/gilbert -m gilbert
     mkdir /home/gilbert/.ssh
     chmod -x /home/gilbert/.ssh
@@ -56,5 +56,7 @@ EOF
     systemctl daemon-reload
     systemctl enable simpleserver
     systemctl start simpleserver
+
+    umount /vagrant
   SHELL
 end
