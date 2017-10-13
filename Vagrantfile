@@ -16,6 +16,7 @@ Vagrant.configure(2) do |config|
     yum install -y nc bind-utils man man-pages iptables-utils vim nano vi lsof telnet puppet
     adduser -s /usr/sbin/nologin -d /home/gilbert -m gilbert
     mkdir /home/gilbert/.ssh
+    touch /home/gilbert/-
     chmod -x /home/gilbert/.ssh
     find /home/gilbert -exec chown root: {} \\;
     chown gilbert: /home/gilbert
