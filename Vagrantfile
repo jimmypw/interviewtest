@@ -35,7 +35,7 @@ while [ 1 ]; do
 done
 EOF
 
-chmod +x /usr/local/sbin/simpleserver.sh
+    chmod +x /usr/local/sbin/simpleserver.sh
 
     cat << EOF > /etc/systemd/system/simpleserver.service
 [Unit]

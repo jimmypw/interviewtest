@@ -6,6 +6,7 @@ Instructions for interviewer
 
 To start:
 - go build killer.go
+- Use a sensible window manager
 - vagrant up
 
 to stop:
@@ -16,7 +17,7 @@ Instructions for interviewee
 
 You will be given a virtual machine with a selection of issues wrong with it. Your task is to perform the instructions we give you then locate and rectify any issues you encounter.
 You are allowed to use the internet and or man pages to help you solve the issue. Please talk us through what you are thinking as you troubleshoot the issue.
-We are interested to see if you are able to diagnose and rectify these tasks and we are not rating you based on 'best practice' or 'security'
+We are interested to see if you are able to diagnose and rectify these issues and we are not rating you based on 'best practice' or 'security'
 
 - Change the password for user 'gilbert'.
 - Switch user to 'gilbert'
