@@ -24,9 +24,9 @@ We are interested to see if you are able to diagnose and rectify these tasks and
 - Create an SSH key for the user 'gilbert', add the public key to authorized_keys and test
 - Install httpd
 - start httpd and verify functionality
-- there is a second disk attached to the system. format it with a filesystem, create a persistant mount, mount it and create a file
+- there is a second disk attached to the system. format it with ext4 filesystem, create a persistant mount, mount it and create a file
 - run the mystery application /usr/local/bin/pbcak
-- identify why your mount no longer works
+- identify why your mount no longer works and attempt to recover it.
 
 Validation
 ==========
@@ -112,3 +112,4 @@ Work out what has happened to the partition and try to repair it
 ----------------------------------------------------------------
 A load of rubbish has been written to the filesystem and the filesystem destroyed. This can be seen with 
 - xxd /dev/sdb
+- fsck.ext4 /dev/sdb
