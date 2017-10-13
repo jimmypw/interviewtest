@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     yum install -y epel-release
-    yum install -y nc bind-utils man man-pages iptables-utils vim nano vi lsof telnet puppet
+    yum install -y nc bind-utils man man-pages iptables-utils vim nano vi lsof telnet puppet psmisc
     adduser -s /usr/sbin/nologin -d /home/gilbert -m gilbert
     mkdir /home/gilbert/.ssh
     touch /home/gilbert/-
