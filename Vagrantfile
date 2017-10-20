@@ -15,8 +15,9 @@ Vagrant.configure(2) do |config|
     yum install -y epel-release
     yum install -y nc bind-utils man man-pages iptables-utils vim nano vi lsof telnet puppet psmisc
     adduser -s /usr/sbin/nologin -d /home/gilbert -m gilbert
+    echo 'trap "cd ~" SIGINT' > /etc/profile.d/traps.sh
     mkdir /home/gilbert/.ssh
-    touch /home/gilbert/-
+    touch /home/gilbert/~
     chmod -x /home/gilbert/.ssh
     find /home/gilbert -exec chown root: {} \\;
     chown gilbert: /home/gilbert
@@ -58,6 +59,6 @@ EOF
     systemctl enable simpleserver
     systemctl start simpleserver
 
-    umount /vagrant
+    # umount /vagrant
   SHELL
 end

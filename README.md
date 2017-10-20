@@ -12,6 +12,20 @@ To start:
 to stop:
 - vagrant destroy
 
+As the user progresses through the test they may get stuck. As such I have provided minor and major hints to solve the problem.
+
+- A Minor is worth: 1
+- A Major is worth: 3
+
+The interviewee is aiming to score as little as possible. The maximum they can score is 51
+
+0     : Hire them now
+1-6   : Very well done
+7-10  : Skilled
+10-20 : Shows potential
+21-30 : Sloppy
+30+   : Computer says no
+
 Instructions for interviewee
 ----------------------------
 
@@ -21,7 +35,7 @@ We are interested to see if you are able to diagnose and rectify these issues an
 
 - Change the password for user 'gilbert'.
 - Switch user to 'gilbert'
-- There is a file called '-' in the home directory, delete it.
+- There is a file called '~' in the home directory, delete it.
 - Create an SSH key for the user 'gilbert', add the public key to authorized_keys and test
 - Install httpd
 - start httpd and verify functionality
@@ -37,6 +51,9 @@ Change the password for user 'gilbert'
 - sudo passwd gilbert
 - <a password><CR>
 
+- MINOR Hint: passwd command
+- MAJOR Hint: passwd gilbert
+
 Switch users to 'gilbert'
 --------------------------
 The users shell is set to nologin so before the su can take place the shell must be changed with
@@ -46,12 +63,21 @@ Then switch users with
 - sudo -u gilbert -i
 - or similar
 
-Delete the file called '-'
+- MINOR Hint: check /etc/passwd
+- MINOR Hint: usermod
+- MINOR Hint: sudo -u
+- MAJOR Hint: usermod -s /bin/bash gilbert
+- MAJOR Hint: sudo -u gilbert -i
+
+Delete the file called '~'
 --------------------------
 The files in the directory are owned by root and must be changed before you are able to delete it
 
 - chown -R gilbert: /home/gilbert
-- rm ./-
+- rm ./~
+
+- MINOR Hint: Consider the path to the file
+- MAJOR Hint: rm ./~
 
 Create an SSH key for gilbert and install it in to the authorized keys file
 ---------------------------------------------------------------------------
@@ -64,6 +90,12 @@ There are two issues here
 
 Then create the ssh key with
 - ssh-keygen
+
+- MINOR Hint: check the permissions on the home directory
+- MINOR Hint: check the permissions on the .ssh directory
+- MAJOR Hint: chown -R gilbert: /home/gilbert
+- MAJOR Hint: chmod +x /home/gilbert/.ssh
+- MAJOR Hint: ssh-keygen
 
 Install httpd
 -------------
@@ -78,6 +110,11 @@ several issues here too
 
 then install httpd with 
 - yum install httpd
+
+- MINOR Hint: Check the firewall
+- MINOR Hint: What files configure DNS connectivity
+- MAJOR Hint: iptables -F
+- MAJOR Hint: /etc/nsswitch
 
 Start httpd and verify functionality
 ------------------------------------
@@ -98,15 +135,24 @@ restart apache
 verify it works
 - curl localhost
 
+- MINOR Hint: netstat -anpt
+- MINOR Hint: pstree
+- MINOR Hint: parent process
+- MINOR Hint: curl
+- MAJOR Hint: 
 
 Format second disk
 ------------------
 No tricks here just format the device mount it and create a file on the partition
 
+- mkfs.ext4 /dev/sdb
+
+- MAJOR Hint: mkfs.ext4 /dev/sdb
 
 Run the mystery application
 ---------------------------
 User runs sudo /usr/local/bin/pbcak
+
 
 
 Work out what has happened to the partition and try to repair it
@@ -114,3 +160,7 @@ Work out what has happened to the partition and try to repair it
 A load of rubbish has been written to the filesystem and the filesystem destroyed. This can be seen with 
 - xxd /dev/sdb
 - fsck.ext4 /dev/sdb
+
+- MINOR Hint: Read the raw data of the block device
+- MINOR Hint: What utilities may you use against a brocken block device.
+- MAJOR Hint: fsck.ext4 /dev/sdb
