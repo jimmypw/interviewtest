@@ -5,9 +5,8 @@ Instructions for interviewer
 ----------------------------
 
 To start:
-- go build killer.go
 - Use a sensible window manager
-- vagrant up
+- run ./starttest.sh
 
 to stop:
 - vagrant destroy
